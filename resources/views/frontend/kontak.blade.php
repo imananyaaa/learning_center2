@@ -38,7 +38,7 @@
     <div class="container">
         <div class="row g-4 mb-5">
             @foreach([
-                ['bi-geo-alt-fill','Alamat','Sungai Awan Kiri, Kecamatan Muara Pawan, Kabupaten Ketapang, Kalimantan Barat 78813','',''],
+                ['bi-geo-alt-fill','Alamat','Koordinat -1.7375161006912656, 110.01042955355726','https://www.google.com/maps/dir/?api=1&destination=-1.7375161006912656,110.01042955355726','Rute'],
                 ['bi-telephone-fill','Telepon','+62 857-5005-7187','tel:+6285750057187','Hubungi'],
                 ['bi-whatsapp','WhatsApp','+62 857-5005-7187','https://wa.me/6285750057187','Chat'],
                 ['bi-instagram','Instagram','@learningcenterketapang','https://www.instagram.com/learningcenterketapang/','Follow'],
@@ -99,15 +99,18 @@
                 <div class="divider"></div>
                 <div style="border-radius:var(--r);overflow:hidden;border:2px solid var(--br-100);box-shadow:var(--sh-sm);">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7!2d109.9!3d-1.85!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSungai+Awan+Kiri+Ketapang!5e0!3m2!1sid!2sid!4v1"
-                        width="100%" height="340" style="border:0;display:block;" allowfullscreen loading="lazy"></iframe>
+                        src="https://maps.google.com/maps?q=-1.7375161006912656,110.01042955355726&hl=id&t=m&z=17&output=embed"
+                        width="100%" height="340" style="border:0;display:block;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div style="background:var(--cr-50);border:1px solid var(--br-100);border-radius:var(--r-sm);padding:18px;margin-top:16px;">
                     <div style="font-size:.82rem;color:var(--tx-400);line-height:1.8;">
                         <div class="d-flex gap-2 mb-2"><i class="bi bi-geo-alt-fill mt-1" style="color:var(--br-500);flex-shrink:0;"></i>
-                        Sungai Awan Kiri, Kec. Muara Pawan, Kab. Ketapang, Kalimantan Barat 78813</div>
-                        <div class="d-flex gap-2"><i class="bi bi-clock-fill mt-1" style="color:var(--br-500);flex-shrink:0;"></i>
+                        Koordinat lokasi: -1.7375161006912656, 110.01042955355726</div>
+                        <div class="d-flex gap-2 mb-3"><i class="bi bi-clock-fill mt-1" style="color:var(--br-500);flex-shrink:0;"></i>
                         Senin – Jumat: 08:00 – 17:00 WIB</div>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=-1.7375161006912656,110.01042955355726" target="_blank" rel="noopener" class="btn-br" style="padding:9px 18px;font-size:.82rem;justify-content:center;width:100%;">
+                            <i class="bi bi-signpost-split-fill"></i> Arahkan ke Lokasi
+                        </a>
                     </div>
                 </div>
             </div>
