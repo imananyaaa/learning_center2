@@ -37,7 +37,7 @@ class UlasanController extends Controller
         return view('frontend.ulasan', compact(
             'ulasan',
             'rataRating',
-            'totalUlasan'
+            'totalUlasan',
             'ratingPersen'
         ));
     }

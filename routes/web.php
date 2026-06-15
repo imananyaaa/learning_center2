@@ -12,6 +12,10 @@ use App\Http\Controllers\Frontend\UlasanController;
 
 // ── ADMIN Controllers ──
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\FasilitasAdminController;
+use App\Http\Controllers\Admin\EventAdminController;
+use App\Http\Controllers\Admin\UlasanAdminController;
+use App\Http\Controllers\Admin\KontakAdminController;
 
 /*
 |==========================================================================
@@ -33,12 +37,32 @@ Route::post('/fasilitas/ulasan', [FasilitasController::class, 'storeUlasan'])->n
 | ADMIN ROUTES (Perlu Auth)
 |==========================================================================
 */
-Route::middleware(['auth'])->group(function () {
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware(['auth', 'role:admin,super_admin'])
+    ->group(function () {
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])
-        ->name('admin.dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-});
+        // Fasilitas
+        Route::resource('fasilitas', FasilitasAdminController::class);
+
+        // Event
+        Route::resource('event', EventAdminController::class);
+
+        // Ulasan
+        Route::get('ulasan', [UlasanAdminController::class, 'index'])->name('ulasan.index');
+        Route::patch('ulasan/{ulasan}/approve', [UlasanAdminController::class, 'approve'])->name('ulasan.approve');
+        Route::patch('ulasan/{ulasan}/reject', [UlasanAdminController::class, 'reject'])->name('ulasan.reject');
+        Route::delete('ulasan/{ulasan}', [UlasanAdminController::class, 'destroy'])->name('ulasan.destroy');
+
+        // Kontak
+        Route::get('kontak', [KontakAdminController::class, 'index'])->name('kontak.index');
+        Route::get('kontak/{kontak}', [KontakAdminController::class, 'show'])->name('kontak.show');
+        Route::patch('kontak/{kontak}/balas', [KontakAdminController::class, 'balas'])->name('kontak.balas');
+        Route::delete('kontak/{kontak}', [KontakAdminController::class, 'destroy'])->name('kontak.destroy');
+
+    });
 
 /*
 |==========================================================================

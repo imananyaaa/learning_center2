@@ -1,22 +1,9 @@
 <?php
-
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Model;
 
 class Ulasan extends Model
 {
-    protected $table = 'ulasan';
-
-    protected $fillable = [
-        'user_id',
-        'instansi',
-        'rating',
-        'komentar',
-    ];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    protected $fillable = ['nama','instansi','rating','ulasan','status'];
+    protected $attributes = ['status' => 'pending'];
 }

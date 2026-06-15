@@ -8,6 +8,39 @@
     /* ══════════════════════════════════════════════════════════════
        REVIEW SECTION
     ══════════════════════════════════════════════════════════════ */
+    .page-hero {
+        position: relative;
+        padding: 160px 0 80px;
+        overflow: hidden;
+    }
+
+    .page-hero-bg {
+        position: absolute;
+        inset: 0;
+        background-image: url('{{ asset("images/lc.jpg") }}');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .page-hero-ov {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(13,71,161,.92), rgba(21,101,192,.80));
+    }
+
+    .stag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 8px 16px;
+        border-radius: 25px;
+        margin-bottom: 16px;
+    }
+
     .rating-summary {
         background: var(--primary-dark);
         color: #fff;
@@ -16,23 +49,27 @@
         text-align: center;
         height: 100%;
     }
+
     .rating-big {
         font-size: 3.5rem;
         font-weight: 800;
         color: #fff;
         line-height: 1;
     }
+
     .rating-bar {
         height: 8px;
         background: rgba(255,255,255,.15);
         border-radius: 4px;
         overflow: hidden;
     }
+
     .rating-bar-fill {
         height: 100%;
         background: #FDD835;
         border-radius: 4px;
     }
+
     .review-card {
         background: var(--bg-white);
         border: 1px solid var(--primary-lightest);
@@ -40,10 +77,12 @@
         padding: 20px 24px;
         transition: var(--transition);
     }
+
     .review-card:hover {
         box-shadow: var(--shadow-sm);
         border-color: var(--primary-lighter);
     }
+
     .reviewer-avatar {
         width: 44px;
         height: 44px;
@@ -57,6 +96,7 @@
         font-size: 1.1rem;
         flex-shrink: 0;
     }
+
     .stars-sm {
         color: #FDD835;
         font-size: 0.9rem;
@@ -94,6 +134,64 @@
         color: #FDD835;
     }
 </style>
+
+{{-- PAGE HERO --}}
+<section class="page-hero">
+
+    <div class="page-hero-bg"></div>
+
+    <div class="page-hero-ov"></div>
+
+    <div class="container" style="position:relative; z-index:2;">
+
+        <div data-aos="fade-up">
+
+            <div class="stag"
+            style="background:rgba(255,255,255,.15);
+            color:#fff;
+            border:1px solid rgba(255,255,255,.25);">
+
+            <i class="bi bi-star-fill"></i>
+            Ulasan
+
+        </div>
+
+            <h1 style="
+                font-size:clamp(2rem,4vw,3rem);
+                font-weight:800;
+                color:#fff;
+                line-height:1.2;
+                margin-bottom:16px;
+            ">
+
+                Apa Kata
+                <em style="
+                    color:var(--primary-lighter);
+                    font-style:normal;
+                ">
+                    Pengguna
+                </em>
+
+            </h1>
+
+
+            <p style="
+                color:rgba(255,255,255,.75);
+                max-width:500px;
+                line-height:1.8;
+                margin:0;
+                font-size:1rem;
+            ">
+
+                Berbagai pengalaman dan cerita pengguna selama menggunakan fasilitas Learning Center.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 
 {{-- ULASAN & RATING --}}
 <section style="background:var(--bg-white);" id="ulasan">
