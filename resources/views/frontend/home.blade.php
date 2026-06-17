@@ -341,9 +341,24 @@
         .site-footer {background: var(--text-dark);padding-top: 60px;}
         .footer-brand .brand-logo {background: rgba(255, 255, 255, 0.1);border: 2px solid rgba(255, 255, 255, 0.2);}
         .footer-brand{display:flex;align-items:center;gap:15px;}
-        .footer-logos{display:flex;align-items:center;gap:8px;flex-shrink:0;}
-        .footer-logo-img{width:55px;height:55px;object-fit:contain;}
-        .footer-brand .brand-logo i {color: var(--primary-lighter);}
+        .footer-logos{
+            display:flex;
+            align-items:center;
+            gap:18px;
+            flex-shrink:0;
+        }
+
+        .footer-logo-img{
+            width:65px;
+            height:65px;
+            object-fit:contain;
+        }
+
+        .footer-brand .brand-logo{
+            background:transparent;
+            border:none;
+        }
+
         .footer-brand-text h5{margin:0;color:#fff;font-size:1.8rem;font-weight:700;}
         .footer-brand-text span{color:rgba(255,255,255,.7);font-size:.95rem;}
         .footer-title {font-size: 0.8rem;font-weight: 700;text-transform: uppercase;letter-spacing: 1.5px;color: rgba(255, 255, 255, 0.4);margin-bottom: 20px;}
@@ -926,7 +941,7 @@
         <div class="row g-4 g-lg-5">
             <div class="col-lg-4 col-md-6">
                 <div class="footer-brand d-flex align-items-center gap-3 mb-4">
-                    <div class="brand-logo">
+                    <div class="footer-logos">
                         <img src="{{ asset('images/logo iar.png') }}"
                              alt="Logo IAR"
                              class="footer-logo-img">

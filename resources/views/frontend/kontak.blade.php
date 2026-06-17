@@ -12,8 +12,64 @@
 .contact-card:hover{border-color:var(--br-300);box-shadow:var(--sh-md);transform:translateY(-3px);}
 .contact-icon{width:56px;height:56px;background:#E3F2FD;color:#1976D2;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:0 auto 14px;transition:var(--ease);}
 .contact-card:hover .contact-icon{background:#1976D2;color:#fff;}
-.form-input{border:1px solid var(--br-100);border-radius:var(--r-sm);background:var(--cr-100);font-size:.88rem;padding:10px 14px;transition:var(--ease);width:100%;}
-.form-input:focus{outline:none;border-color:var(--br-300);background:var(--cr-50);box-shadow:0 0 0 3px rgba(201,160,122,.18);}
+.form-input:focus{
+    outline:none;
+    border-color:#1976D2;
+    box-shadow:0 0 0 4px rgba(25,118,210,.15);
+}
+.contact-form-box{
+    background:#fff;
+    padding:40px;
+    border-radius:28px;
+    border:1.8px solid #D5E7FF;
+    box-shadow:0 10px 25px rgba(0, 70, 160, 0.08);
+    transition:all .3s ease;
+}
+
+.contact-form-box:hover{
+    border-color:#90CAF9;
+    box-shadow:0 15px 35px rgba(0, 70, 160, 0.15);
+    transform:translateY(-3px);
+}
+
+.form-input{
+    width:100%;
+    min-height:55px;
+    padding:15px 18px;
+    border:1.5px solid #D7E3F0;
+    border-radius:14px;
+    background:#fff;
+    font-size:.95rem;
+    color:#445566;
+    transition:all .3s ease;
+}
+
+textarea.form-input{
+    min-height:160px;
+    resize:none;
+}
+
+.btn-kirim{
+    width:100%;
+    height:55px;
+    border:none;
+    background:linear-gradient(135deg,#1565C0,#1E88E5);
+    color:#fff;
+    border-radius:16px;
+    font-size:1rem;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    transition:all .3s ease;
+}
+
+.btn-kirim:hover{
+    color:#fff;
+    transform:translateY(-3px);
+    box-shadow:0 12px 25px rgba(21,101,192,.35);
+}
 </style>
 @endpush
 
@@ -34,7 +90,7 @@
     </div>
 </section>
 
-<section style="background:var(--cr-100);">
+<section style="background:var(--cr-100); padding:80px 0;">
     <div class="container">
         <div class="row g-4 mb-5">
             @foreach([
@@ -63,36 +119,104 @@
                 <div class="stag"><i class="bi bi-send-fill"></i>Kirim Pesan</div>
                 <h2 class="stitle">Ada <em>Pertanyaan?</em></h2>
                 <div class="divider"></div>
+
+                <div class="contact-form-box">
+
                 <form action="{{ route('kontak.store') }}" method="POST">
                     @csrf
                     @if(session('success'))
-                    <div class="alert" style="background:var(--cr-50);border:1px solid var(--br-100);border-radius:var(--r-sm);padding:14px;margin-bottom:20px;font-size:.88rem;color:var(--br-700);">
-                        <i class="bi bi-check-circle-fill me-2"></i>{{ session('success') }}
+                    <div style="
+                    background:#d1fae5;
+                    color:#065f46;
+                    padding:15px;
+                    border-radius:10px;
+                    margin-bottom:15px;
+                    font-weight:600;
+                    ">
+                        ✅ {{ session('success') }}
                     </div>
                     @endif
                     <div class="d-flex flex-column gap-3">
                         <div>
                             <label style="font-size:.82rem;font-weight:600;color:var(--tx-900);margin-bottom:6px;display:block;">Nama Lengkap</label>
-                            <input type="text" name="nama" class="form-input" placeholder="Nama Anda" required>
+                            <input
+                               type="text"
+                               name="nama"
+                               class="form-input"
+                               placeholder="Nama Anda"
+                               required>
                         </div>
                         <div>
                             <label style="font-size:.82rem;font-weight:600;color:var(--tx-900);margin-bottom:6px;display:block;">Email</label>
-                            <input type="email" name="email" class="form-input" placeholder="email@contoh.com" required>
+                            <input
+                               type="email"
+                               name="email"
+                               class="form-input"
+                               placeholder="email@contoh.com"
+                               required>
                         </div>
                         <div>
                             <label style="font-size:.82rem;font-weight:600;color:var(--tx-900);margin-bottom:6px;display:block;">Nomor Telepon</label>
-                            <input type="text" name="telepon" class="form-input" placeholder="+62 ...">
+                            <input
+                               type="text"
+                               name="telepon"
+                               class="form-input"
+                               placeholder="+62 ...">
+                        </div>
+                        <div>
+                            <label style="font-size:.82rem;font-weight:600;color:var(--tx-900);margin-bottom:6px;display:block;">
+                                Tujuan
+                            </label>
+
+                            <select name="tujuan" class="form-input" required>
+                                <option value="">-- Pilih Tujuan --</option>
+
+                                <option value="Informasi Program">
+                                    Informasi Program
+                                </option>
+
+                                <option value="Pendaftaran Peserta">
+                                    Pendaftaran Peserta
+                                </option>
+
+                                <option value="Kerja Sama">
+                                    Kerja Sama
+                                </option>
+
+                                <option value="Saran dan Masukan">
+                                    Saran dan Masukan
+                                </option>
+
+                                <option value="Pengaduan">
+                                    Pengaduan
+                                </option>
+
+                                <option value="Lainnya">
+                                    Lainnya
+                                </option>
+
+                            </select>
                         </div>
                         <div>
                             <label style="font-size:.82rem;font-weight:600;color:var(--tx-900);margin-bottom:6px;display:block;">Pesan</label>
-                            <textarea name="pesan" rows="5" class="form-input" placeholder="Tulis pesan Anda..." required style="resize:none;"></textarea>
+                            <textarea
+                                name="pesan" rows="5"
+                                class="form-input"
+                                placeholder="Tulis pesan Anda..."
+                                required style="resize:none;"></textarea>
                         </div>
-                        <button type="submit" class="btn-br" style="align-self:flex-start;">
-                            <i class="bi bi-send-fill"></i> Kirim Pesan
+                        <button type="submit" class="btn-kirim">
+                            <i class="bi bi-send-fill"></i>
+                            Kirim Pesan
                         </button>
                     </div>
+
                 </form>
+
+                </div>
+
             </div>
+
             <div class="col-lg-6" data-aos="fade-left">
                 <div class="stag"><i class="bi bi-map-fill"></i>Lokasi</div>
                 <h2 class="stitle">Temukan <em>Kami</em></h2>

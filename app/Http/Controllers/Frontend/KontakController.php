@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\PesanKontak;
 
 class KontakController extends Controller
 {
@@ -33,13 +34,23 @@ class KontakController extends Controller
         $validated = $request->validate([
             'nama' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'subjek' => 'required|string|max:255',
+            'telepon' => 'nullable|string|max:20',
+            'tujuan' => 'required|string|max:255',
             'pesan' => 'required|string|max:2000',
         ]);
 
-        // Di sini Anda bisa menambahkan logika untuk menyimpan pesan ke database
-        // atau mengirim email notifikasi
+        PesanKontak::create([
+            'nama' => $validated['nama'],
+            'email' => $validated['email'],
+            'telepon' => $validated['telepon'] ?? null,
+            'tujuan' => $validated['tujuan'],
+            'pesan' => $validated['pesan'],
+            'status_baca' => false
+        ]);
 
-        return back()->with('success', 'Pesan Anda telah terkirim! Kami akan menghubungi Anda segera.');
+        return back()->with(
+            'success',
+            'Pesan Anda berhasil dikirim.'
+        );
     }
 }

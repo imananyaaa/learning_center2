@@ -39,13 +39,13 @@ Route::post('/fasilitas/ulasan', [FasilitasController::class, 'storeUlasan'])->n
 */
 Route::prefix('admin')
     ->name('admin.')
-    ->middleware(['auth', 'role:admin,super_admin'])
+    ->middleware(['auth'])
     ->group(function () {
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         // Fasilitas
-        Route::resource('fasilitas', FasilitasAdminController::class);
+        Route::resource('fasilitas', FasilitasAdminController::class)->parameters(['fasilitas' => 'fasilitas']);
 
         // Event
         Route::resource('event', EventAdminController::class);

@@ -8,11 +8,31 @@
         <h2 class="text-lg font-bold text-slate-800 mb-6">Tambah Event Baru</h2>
         <form action="{{ route('admin.event.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+
+            @if ($errors->any())
+             <div style="
+                background:#fee2e2;
+                border:1px solid #ef4444;
+                color:#b91c1c;
+                padding:15px;
+                margin-bottom:20px;
+                border-radius:8px;
+            ">
+                <strong>Terjadi Kesalahan:</strong>
+
+                <ul style="margin-top:10px;">
+                    @foreach ($errors->all() as $error)
+                         <li>• {{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
             <div class="space-y-5">
                 <div>
                     <label class="form-label">Nama Event <span class="text-red-500">*</span></label>
-                    <input type="text" name="nama" value="{{ old('nama') }}" class="form-input" required>
-                    @error('nama')<p class="form-error">{{ $message }}</p>@enderror
+                    <input type="text" name="judul" value="{{ old('judul') }}" class="form-input" required>
+                    @error('judul')<p class="form-error">{{ $message }}</p>@enderror
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div>

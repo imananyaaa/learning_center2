@@ -1,38 +1,44 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
-use App\Models\Kontak;
+use App\Models\PesanKontak;
 use Illuminate\Http\Request;
 
 class KontakAdminController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $query = Kontak::latest();
-        if ($request->filled('status')) $query->where('status', $request->status);
-        $kontaks = $query->paginate(15);
+        // Ambil semua pesan kontak terbaru
+        $kontaks = PesanKontak::latest()->paginate(15);
+
+        // Statistik kontak
         $stats = [
-            'total'   => Kontak::count(),
-            'baru'    => Kontak::where('status','baru')->count(),
-            'dibaca'  => Kontak::where('status','dibaca')->count(),
-            'dibalas' => Kontak::where('status','dibalas')->count(),
+            'total' => PesanKontak::count(),
+            'baru' => PesanKontak::where('status_baca', false)->count(),
         ];
-        return view('admin.kontak.index', compact('kontaks','stats'));
+
+        return view('admin.kontak.index', compact('kontaks', 'stats'));
     }
-    public function show(Kontak $kontak)
+
+
+    public function show(PesanKontak $kontak)
     {
-        if ($kontak->status === 'baru') $kontak->update(['status'=>'dibaca']);
+        $kontak->update([
+        'status_baca' => true
+        ]);
+
         return view('admin.kontak.show', compact('kontak'));
     }
-    public function balas(Request $request, Kontak $kontak)
-    {
-        $request->validate(['balasan'=>'required|string']);
-        $kontak->update(['balasan'=>$request->balasan,'status'=>'dibalas']);
-        return back()->with('success','Balasan berhasil disimpan!');
-    }
-    public function destroy(Kontak $kontak)
+
+
+    public function destroy(PesanKontak $kontak)
     {
         $kontak->delete();
-        return redirect()->route('admin.kontak.index')->with('success','Pesan berhasil dihapus!');
+
+        return redirect()
+            ->route('admin.kontak.index')
+            ->with('success', 'Pesan berhasil dihapus!');
     }
 }

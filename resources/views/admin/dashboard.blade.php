@@ -163,7 +163,7 @@ const ctxU = document.getElementById('chartUlasan').getContext('2d');
 new Chart(ctxU, {
     type: 'bar',
     data: {
-        labels: {!! json_encode($chartLabels) !!},
+        labels: {!! json_encode($months) !!},
         datasets: [{
             label: 'Jumlah Ulasan',
             data: {!! json_encode($chartData) !!},

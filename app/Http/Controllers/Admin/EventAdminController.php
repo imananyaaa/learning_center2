@@ -42,7 +42,7 @@ class EventAdminController extends Controller
     public function update(Request $request, Event $event)
     {
         $request->validate([
-            'nama'      => 'required|string|max:255',
+            'judul'     => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'tanggal'   => 'required|date',
             'waktu'     => 'required',
@@ -51,7 +51,19 @@ class EventAdminController extends Controller
             'kuota'     => 'nullable|integer',
             'foto'      => 'nullable|image|max:2048',
         ]);
-        $data = $request->only('nama','deskripsi','tanggal','waktu','lokasi','jenis','kuota','status');
+
+
+        $data = $request->only(
+            'judul',
+            'deskripsi',
+            'tanggal',
+            'waktu',
+            'lokasi',
+            'jenis',
+            'kuota',
+            'status'
+        );
+
         if ($request->hasFile('foto')) {
             if ($event->foto) Storage::disk('public')->delete($event->foto);
             $data['foto'] = $request->file('foto')->store('event','public');

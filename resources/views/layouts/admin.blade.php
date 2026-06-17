@@ -86,14 +86,18 @@
         </a>
         <a href="{{ route('admin.ulasan.index') }}" class="nav-link {{ request()->routeIs('admin.ulasan*') ? 'active' : '' }}">
             <span class="nav-icon"><i class="fa-solid fa-star"></i></span> Ulasan
-            @php $newUlasan = \App\Models\Ulasan::where('status','pending')->count(); @endphp
+            @php
+            $newUlasan = \App\Models\Ulasan::where('status','pending')->count();
+            @endphp
             @if($newUlasan > 0)
                 <span class="ml-auto bg-yellow-400 text-yellow-900 text-[10px] font-bold px-2 py-0.5 rounded-full">{{ $newUlasan }}</span>
             @endif
         </a>
         <a href="{{ route('admin.kontak.index') }}" class="nav-link {{ request()->routeIs('admin.kontak*') ? 'active' : '' }}">
             <span class="nav-icon"><i class="fa-solid fa-envelope"></i></span> Kontak
-            @php $newKontak = \App\Models\Kontak::where('status','baru')->count(); @endphp
+           @php
+           $newKontak = \App\Models\PesanKontak::where('status_baca', false)->count();
+           @endphp
             @if($newKontak > 0)
                 <span class="ml-auto bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">{{ $newKontak }}</span>
             @endif
@@ -135,10 +139,7 @@
             </div>
         </div>
         <div class="flex items-center gap-3">
-            <a href="{{ route('home') }}" target="_blank" class="text-slate-400 hover:text-blue-600 text-sm font-medium flex items-center gap-1.5">
-                <i class="fa-solid fa-globe text-xs"></i><span class="hidden sm:inline">Website</span>
-            </a>
-            <div class="w-px h-5 bg-slate-200"></div>
+
             <div class="text-right hidden sm:block">
                 <p class="text-sm font-bold text-slate-800">{{ auth()->user()->name }}</p>
                 <p class="text-[11px] text-slate-400 capitalize">{{ auth()->user()->role }}</p>

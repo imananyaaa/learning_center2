@@ -339,13 +339,42 @@
            FOOTER
         ══════════════════════════════════════════════════════════════ */
         .site-footer {background: var(--text-dark);padding-top: 60px;}
-        .footer-brand .brand-logo {background: rgba(255, 255, 255, 0.1);border: 2px solid rgba(255, 255, 255, 0.2);}
-        .footer-brand{display:flex;align-items:center;gap:15px;}
-        .footer-logos{display:flex;align-items:center;gap:8px;flex-shrink:0;}
-        .footer-logo-img{width:55px;height:55px;object-fit:contain;}
-        .footer-brand .brand-logo i {color: var(--primary-lighter);}
-        .footer-brand-text h5{margin:0;color:#fff;font-size:1.8rem;font-weight:700;}
-        .footer-brand-text span{color:rgba(255,255,255,.7);font-size:.95rem;}
+        .footer-brand .brand-logo {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+       .footer-brand {
+           display: flex;
+           align-items: center;
+           gap: 15px;
+        }
+
+        .footer-logos {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .footer-logo-img {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+            background: transparent;
+        }
+
+        .footer-brand-text h5 {
+            margin: 0;
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .footer-brand-text span {
+            color: rgba(255,255,255,.7);
+            font-size: .95rem;
+        }
+
         .footer-title {font-size: 0.8rem;font-weight: 700;text-transform: uppercase;letter-spacing: 1.5px;color: rgba(255, 255, 255, 0.4);margin-bottom: 20px;}
         .footer-link {color: rgba(255, 255, 255, 0.6) !important;text-decoration: none;font-size: 0.9rem;transition: var(--transition);display: inline-block;padding: 4px 0;}
         .footer-link:hover {color: var(--primary-lighter) !important;padding-left: 5px;}
@@ -444,14 +473,16 @@
         <div class="row g-4 g-lg-5">
             <div class="col-lg-4 col-md-6">
                 <div class="footer-brand d-flex align-items-center gap-3 mb-4">
-                    <div class="brand-logo">
+                    <div class="footer-logos">
+
                         <img src="{{ asset('images/logo iar.png') }}"
-                             alt="Logo IAR"
-                             class="footer-logo-img">
+                        alt="Logo IAR"
+                        class="footer-logo-img">
 
                         <img src="{{ asset('images/logo lc.png') }}"
-                             alt="Logo Learning Center"
-                             class="footer-logo-img">
+                        alt="Logo Learning Center"
+                        class="footer-logo-img">
+
                     </div>
                     <div>
                          <div class="footer-brand-text">

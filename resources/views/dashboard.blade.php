@@ -233,7 +233,6 @@
                 $actions = [
                     ['icon' => '🏛️', 'label' => 'Lihat Fasilitas', 'bg' => '#eff6ff', 'ic_bg' => '#dbeafe', 'clr' => '#1e40af', 'route' => 'fasilitas'],
                     ['icon' => '📅', 'label' => 'Lihat Event',     'bg' => '#f0fdf4', 'ic_bg' => '#dcfce7', 'clr' => '#166534', 'route' => 'event'],
-                    ['icon' => '🌐', 'label' => 'Lihat Website',   'bg' => '#f0f9ff', 'ic_bg' => '#e0f2fe', 'clr' => '#075985', 'route' => 'home'],
                 ];
             @endphp
 
